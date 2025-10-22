@@ -19,7 +19,8 @@ idade = int(input("Qual sua idade? "))
 
 print(f'Olá {nome}, Você tem {idade} anos de idade ')
 
-
+# se (if) variavel idade_pessoa FOR (=> igual ou maior) que 18,
+# a condição é ativada se nao (else) manda outra mensagem
 if idade >= 18:
     print("Aparentemente você é maior de idade 😎 ta safe")
 else:

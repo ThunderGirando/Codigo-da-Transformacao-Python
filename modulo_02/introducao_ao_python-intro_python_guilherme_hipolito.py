@@ -20,3 +20,5 @@ print(f'Olá {nome}, Você tem {idade} anos de idade ')
 
 cor_favorita = input('Qual sua cor favorita?')
 print (f'{cor_favorita} Legal a minha é Vermelho')
+
+
