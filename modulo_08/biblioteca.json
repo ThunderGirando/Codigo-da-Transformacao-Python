@@ -1,0 +1,12 @@
+{
+    "1984": {
+        "titulo": "1984",
+        "autor": "George Orwell",
+        "disponivel": true
+    },
+    "Dom Casmurro": {
+        "titulo": "Dom Casmurro",
+        "autor": "Machado de Assis",
+        "disponivel": true
+    }
+}
