@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if object %}Editar{% else %}Cadastrar{% endif %} Produto</title>
+</head>
+<body>
+    <h1>{% if object %}Editar Produto: {{ object.name }}{% else %}Cadastrar Novo Produto{% endif %}</h1>
+    
+    <form method="post">
+        {% csrf_token %}  
+        {{ form.as_p }}  
+        <button type="submit">Salvar</button>
+    </form>
+
+    <p><a href="{% url 'product_list' %}">Voltar para a Lista</a></p>
+</body>
+</html>
