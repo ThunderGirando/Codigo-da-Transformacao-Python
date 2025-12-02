@@ -1,0 +1,54 @@
+<h1>Estoque de Produtos</h1>
+<p><a href="{% url 'product_add' %}">Adicionar Novo Produto</a></p>
+
+<form method="GET" action="{% url 'product_list' %}">
+    <input type="text" name="q" placeholder="Buscar por nome..." value="{{ search_query }}">
+    <button type="submit">Buscar</button>
+</form>
+
+{% if products %}
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>R$ {{ product.price|floatformat:2 }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>
+                <a href="{% url 'product_edit' product.pk %}">Editar</a> |
+                <a href="{% url 'product_delete' product.pk %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if is_paginated %}
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}&q={{ search_query }}">Anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}&q={{ search_query }}">Próxima</a>
+        {% endif %}
+    </span>
+</div>
+{% endif %}
+
+{% else %}
+<p>Nenhum produto encontrado.</p>
+{% endif %}
